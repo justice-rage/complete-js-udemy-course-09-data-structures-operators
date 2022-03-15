@@ -48,6 +48,38 @@ const restaurant = {
 };
 
 /*
+// Lecture 107: Short Circuiting (&& and ||)
+console.log('--- OR ---');
+// use any data type, return any data type, short-circuiting
+console.log(3 || 'justice');
+console.log('' || 'justice');
+console.log(true || 0);
+console.log(undefined || null);
+
+console.log(undefined || 0 || '' || 'hello' || 23 || null);
+
+restaurant.numGuests = 0;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+
+const guest2 = restaurant.numGuests || 10;
+console.log(guest2);
+
+console.log('--- AND ---');
+
+console.log(0 && 'justice');
+console.log(7 && 'justice')
+
+console.log('Hello' && 23 && null && 'justice');
+
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('mushrooms', 'spinach');
+}
+
+restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+*/
+
+/*
 // Lecture 106: Rest Pattern and Paramters
 // 1) Destructuring
 
