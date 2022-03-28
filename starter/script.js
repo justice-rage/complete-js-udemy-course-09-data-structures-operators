@@ -1,9 +1,9 @@
 'use strict';
 
 //////////////////////////////////
+
 const weekdays = ['mon', 'tue', 'wed', 'thur', 'fri', 'sat', 'sun'];
 const openingHours  = {
-  openingHours: {
     [weekdays[3]]: {
       open: 12,
       close: 22,
@@ -15,9 +15,8 @@ const openingHours  = {
     [weekdays[5]]: {
       open: 0, // Open 24 hours
       close: 24,
-    }
-  },
-};
+    },
+  };
 
 const restaurant = {
   name: 'Classico Italiano',
@@ -31,8 +30,6 @@ const restaurant = {
   order(starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
-
-
   
   orderDelivery({starterIndex = 1, mainIndex = 0, time = '20:00', address}) {
     console.log(`Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}.`);
@@ -48,11 +45,46 @@ const restaurant = {
   },
 };
 
+// Lecture 113: Optional Chaining (?.)
+
+if (restaurant.openingHours.mon) console.log(restaurant.openingHours.mon.open);
+
+// console.log(restaurant.openingHours.mon.open);
+console.log(restaurant.openingHours.fri.open);
+
+// WITH optional chaining
+console.log(restaurant.openingHours.mon?.open);
+console.log(restaurant.openingHours?.mon?.open);
+
+// Example
+const days = ['mon', 'tue', 'wed', 'thur', 'fri', 'sat', 'sun'];
+for(const day of days) {
+  console.log(day);
+  const open = restaurant.openingHours[day]?.open ?? 'closed';
+  console.log(`On ${day}, we open at ${open}`)
+}
+
+// if (restaurant.openingHours.fri) console.log(restaurant.openingHours.fri.open);
+
+// Methods
+console.log(restaurant.order?.(0,1) ?? 'Method does not exist.');
+console.log(restaurant.orderRisotto?.(0,1) ?? 'Method does not exist.');
+
+// Arrays
+// const users = [
+//   {name: 'Jonas', email: 'hello@justice.io'}
+// ];
+
+const users = [];
+
+console.log(users[0]?.name ?? 'User array empty');
+
+if(users.length > 0) console.log(users[0].name);
+else console.log('user array empty')
+
 /////////////////////////////////////
 
 // Lecture 112: Enhanced Object Literals
-
-
 
 /////////////////////////////////////
 
