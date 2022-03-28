@@ -69,6 +69,28 @@ const allPlayers = [...players1, ...players2];
 console.log(allPlayers);
 
 // 4. 
+const team1Finals = [...players1, 'Thiago', 'Coutinho', 'Periscic'];
+console.log(team1Finals);
+
+// 5.
+const {odds: {team1, x: draw, team2}} = game;
+console.log(team1);
+console.log(draw);
+console.log(team2);
+
+// 6.
+const printGoals = function(...players) {
+  console.log(players);
+  console.log(`${players.length} goals were scored`)
+};
+
+// printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich');
+// printGoals('Davies', 'Muller');
+printGoals(...game.scored);
+
+// 7.
+team1 < team2 && console.log(`Team 1 is more likely to win`);
+team1 > team2 && console.log(`Team 1 is more likely to win`);
 //////////////////////////////////////////////
 
 /*
