@@ -691,3 +691,5 @@ console.log(restaurant.name);
 // // default values
 // const [p=1, q=1, r=1] = [8];
 // console.log(p, q, r);
+
+// Complete Lecture 119: Summary: Which Data Structure to use?
