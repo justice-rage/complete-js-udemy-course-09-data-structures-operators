@@ -709,35 +709,81 @@ console.log(restaurant.name);
 // 4. Loop over the events and log them to the console, marking whether it's in the first half or 
 // the second half (after 45 min) of the game, like this: [FIRST HALF] 17: ⚽️ GOAL
 
-const gameEvents = new Map([
-  [17, 'Goal'],
-  [36, 'Substitution'],
-  [47, 'Goal'],
-  [61, 'Substitution'],
-  [64, 'Yellow card'],
-  [69, 'Red card'],
-  [70, 'Substitution'],
-  [72, 'Substitution'],
-  [76, 'Goal'],
-  [80, 'Goal'],
-  [92, 'Yellow card'],
-]);
+// const gameEvents = new Map([
+//   [17, 'Goal'],
+//   [36, 'Substitution'],
+//   [47, 'Goal'],
+//   [61, 'Substitution'],
+//   [64, 'Yellow card'],
+//   [69, 'Red card'],
+//   [70, 'Substitution'],
+//   [72, 'Substitution'],
+//   [76, 'Goal'],
+//   [80, 'Goal'],
+//   [92, 'Yellow card'],
+// ]);
 
-// 1.
-const events = [...new Set(gameEvents.values())];
-console.log(events);
+// // 1.
+// const events = [...new Set(gameEvents.values())];
+// console.log(events);
 
-// 2. 
-gameEvents.delete(64);
-console.log(gameEvents);
+// // 2. 
+// gameEvents.delete(64);
+// console.log(gameEvents);
 
-// 3.
-const time = [...gameEvents.keys()].pop();
-console.log(time);
-console.log(`An event happened, on average, every ${time / gameEvents.size} minutes.`)
+// // 3.
+// const time = [...gameEvents.keys()].pop();
+// console.log(time);
+// console.log(`An event happened, on average, every ${time / gameEvents.size} minutes.`)
 
-// 4.
-for (const [min, event] of gameEvents) {
-  const half = min <= 45 ? 'FIRST' : 'SECOND';
-  console.log(`[${half} HALF ] ${min}: ${event}`);
+// // 4.
+// for (const [min, event] of gameEvents) {
+//   const half = min <= 45 ? 'FIRST' : 'SECOND';
+//   console.log(`[${half} HALF ] ${min}: ${event}`);
+// }
+
+///////////////////////////////////////////
+
+// Lecture 121: Working with Strings - Part 1
+
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+
+console.log(plane[0]);
+console.log(plane[1]);
+console.log(plane[2]);
+console.log('B737'[0]);
+console.log('B737'[0]);
+
+console.log(airline.length);
+console.log('B737'.length);
+
+console.log(airline.indexOf('r'));
+console.log(airline.lastIndexOf('r'));
+console.log(airline.indexOf('portugal'));
+
+console.log(airline.slice(4));
+console.log(airline.slice(4, 7));
+
+console.log(airline.slice(0, 3));
+console.log(airline.slice(airline.lastIndexOf(' ') + 1));
+
+console.log(airline.slice(-2));
+console.log(airline.slice(1, -1));
+
+const checkMiddleSeat = function(seat) {
+  // B and E are middle seats
+  const s = seat.slice(-1);
+  if(s === 'B' || s === 'E')
+  console.log('You got the middle seat');
+  else console.log('You got lucky')
 }
+
+checkMiddleSeat('11B')
+checkMiddleSeat('23C')
+checkMiddleSeat('3E')
+
+console.log(new String('justice'));
+console.log(typeof new String('justice'));
+
+console.log(typeof new String('justice').slice(1));
