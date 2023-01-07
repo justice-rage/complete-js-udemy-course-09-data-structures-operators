@@ -849,52 +849,91 @@ console.log(restaurant.name);
 
 // console.log(typeof new String('justice').slice(1));
 
-// Lecture 123: Working With Strings - Part 3
+// // Lecture 123: Working With Strings - Part 3
 
-// Split and Join
+// // Split and Join
 
-console.log('a+very+nice+string'.split('+'));
-console.log('Justice Pelteir'.split(' '));
+// console.log('a+very+nice+string'.split('+'));
+// console.log('Justice Pelteir'.split(' '));
 
-const [firstName, lastName] = 'Justice Douglas'.split(' ');
+// const [firstName, lastName] = 'Justice Douglas'.split(' ');
 
-const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
-console.log(newName);
+// const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+// console.log(newName);
 
-const capitalizeName = function(name){
-  const names = name.split(' ');
-  const namesUpper = [];
+// const capitalizeName = function(name){
+//   const names = name.split(' ');
+//   const namesUpper = [];
   
-  for(const n of names) {
-    // namesUpper.push(n[0].toUpperCase() + n.slice(1))
-    namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+//   for(const n of names) {
+//     // namesUpper.push(n[0].toUpperCase() + n.slice(1))
+//     namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+//   }
+//   console.log(namesUpper.join(' '));
+// }
+
+// capitalizeName('justice pelteir');
+// capitalizeName('bob john');
+
+// // Padding
+// const message = 'Go to gate 23';
+// console.log(message.padStart(25, '+'));
+// console.log(message.padEnd(25, '+'));
+
+// const maskCreditCard = function(number) {
+//   const str = number + '';
+//   const last = str.slice(-4);
+//   return (last.padStart(str.length, '+'));
+// }
+
+// console.log(maskCreditCard(54323387857584459));
+// console.log(maskCreditCard('866478394354323387857584459'));
+
+// // Repeat
+// const message2 = 'Bad weather... all departures delayed... '
+// console.log(message2.repeat(5));
+
+// const planesInLine = function(n) {
+//   console.log(`There are ${n} planes in line ${'🛩'.repeat(n)}`);
+// }
+// planesInLine(5);
+// planesInLine(15);
+
+// Lecture 124: Coding Challenge #4
+
+// Write a program that receives a list of variable 
+// names written in underscore_case and convert them to camelCase.
+
+// The input will come from a text area inserted into the DOM (see code below)
+// , and conversion will happen when the button is pressed. 
+
+// Test Data (5 separate console.log outputs)
+// underscore_case
+//  first_name
+// some_variable 
+//  calculate_age 
+// delayed_departure 
+
+// SHOULD PRODUCE THIS OUTPUT (5 separate console.log outputs)
+// underscoreCase
+//  firstName
+// someVariable 
+//  calculateAge 
+// delayedDeparture 
+
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+
+const text = document.querySelector('textarea').value;
+
+document.querySelector('button').addEventListener('click', function() {
+  const text = document.querySelector('textarea').value;
+  const rows = text.split('\n');
+  console.log(rows);
+
+  for(const [i, row] of rows.entries()) {
+    const [first, second] = row.toLowerCase().trim().split('_');
+    const output = `${first}${second.replace(second[0], second[0].toUpperCase())}`
+    console.log(`${output.padEnd(20)}${'✅'.repeat(i + 1)}`);
   }
-  console.log(namesUpper.join(' '));
-}
-
-capitalizeName('justice pelteir');
-capitalizeName('bob john');
-
-// Padding
-const message = 'Go to gate 23';
-console.log(message.padStart(25, '+'));
-console.log(message.padEnd(25, '+'));
-
-const maskCreditCard = function(number) {
-  const str = number + '';
-  const last = str.slice(-4);
-  return (last.padStart(str.length, '+'));
-}
-
-console.log(maskCreditCard(54323387857584459));
-console.log(maskCreditCard('866478394354323387857584459'));
-
-// Repeat
-const message2 = 'Bad weather... all departures delayed... '
-console.log(message2.repeat(5));
-
-const planesInLine = function(n) {
-  console.log(`There are ${n} planes in line ${'🛩'.repeat(n)}`);
-}
-planesInLine(5);
-planesInLine(15);
+})
